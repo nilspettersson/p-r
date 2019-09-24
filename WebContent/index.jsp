@@ -8,10 +8,10 @@
 </head>
 <body>
 	
-	<form action="registreringElev">
+	<form action="registreringElev" method="post">
 		personnummer:<input type="text" name="personnummer"><br>
-		förnamn:<input type="text" name="förnamn"><br>
-		efternamn<input type="text" name="efternamn"><br>
+		förnamn:<input type="text" name="fnamn"><br>
+		efternamn<input type="text" name="enamn"><br>
 		<input type="submit">
 	</form>
 	

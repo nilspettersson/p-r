@@ -24,7 +24,8 @@ public class database {
 			
 		}
 		catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e);
+			//JOptionPane.showMessageDialog(null, e);
+			System.out.println(e);
 		}
 	}
 	
