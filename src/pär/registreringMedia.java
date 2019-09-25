@@ -35,24 +35,27 @@ public class registreringMedia extends HttpServlet {
 		database db=new database("localhost", "root", "", "pär");
 		
 		if(request.getParameter("submit").equals("bok")) {
+			String bokId=request.getParameter("bokId");
 			String title=request.getParameter("title");
 			String skaparefnamn=request.getParameter("skaparefnamn");
 			String skapareenamn=request.getParameter("skapareenamn");
-			db.execute("insert into bok(title,skaparefnamn,skapareenamn) values ('"+title+"','"+skaparefnamn+"','"+skapareenamn+"')");
+			db.execute("insert into bok(bokId,title,skaparefnamn,skapareenamn) values ('"+bokId+"','"+title+"','"+skaparefnamn+"','"+skapareenamn+"')");
 		}
 		else if(request.getParameter("submit").equals("dvd")) {
+			String dvdId=request.getParameter("dvdId");
 			String title=request.getParameter("title");
 			String skaparefnamn=request.getParameter("skaparefnamn");
 			String skapareenamn=request.getParameter("skapareenamn");
-			db.execute("insert into dvd(title,skaparefnamn,skapareenamn) values ('"+title+"','"+skaparefnamn+"','"+skapareenamn+"')");
+			db.execute("insert into dvd(dvdId,title,skaparefnamn,skapareenamn) values ('"+dvdId+"','"+title+"','"+skaparefnamn+"','"+skapareenamn+"')");
 		}
 		else if(request.getParameter("submit").equals("cd")) {
+			String cdId=request.getParameter("cdId");
 			String title=request.getParameter("title");
 			String skaparefnamn=request.getParameter("skaparefnamn");
 			String skapareenamn=request.getParameter("skapareenamn");
 			String uppläsarefnamn=request.getParameter("uppläsarefnamn");
 			String uppläsareenamn=request.getParameter("uppläsareenamn");
-			db.execute("insert into cd(title,skaparefnamn,skapareenamn,uppläsarefnamn,uppläsareenamn) values ('"+title+"','"+skaparefnamn+"','"+skapareenamn+"','"+uppläsarefnamn+"','"+uppläsareenamn+"')");
+			db.execute("insert into cd(cdId,title,skaparefnamn,skapareenamn,uppläsarefnamn,uppläsareenamn) values ('"+cdId+"','"+title+"','"+skaparefnamn+"','"+skapareenamn+"','"+uppläsarefnamn+"','"+uppläsareenamn+"')");
 		}
 		
 		

@@ -18,6 +18,7 @@
 	<br>
 	bok
 	<form action="registreringMedia" method="post">
+		bokens id:<input type="text" name="bokId"><br>
 		title:<input type="text" name="title"><br>
 		författarens förnamn:<input type="text" name="skaparefnamn"><br>
 		författarens efternamn:<input type="text" name="skapareenamn"><br>
@@ -28,6 +29,7 @@
 	
 	cd
 	<form action="registreringMedia" method="post">
+		cdns id:<input type="text" name="cdId"><br>
 		title:<input type="text" name="title"><br>
 		författarens förnamn:<input type="text" name="skaparefnamn"><br>
 		författarens efternamn:<input type="text" name="skapareenamn"><br>
@@ -40,6 +42,7 @@
 	
 	dvd
 	<form action="registreringMedia" method="post">
+		dvdns id:<input type="text" name="dvdId"><br>
 		title:<input type="text" name="title"><br>
 		regissör förnamn:<input type="text" name="skaparefnamn"><br>
 		regissör efternamn:<input type="text" name="skapareenamn"><br>
