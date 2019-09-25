@@ -9,19 +9,19 @@
 <body>
 	
 	<form action="registreringElev" method="post">
-		personnummer:<input type="text" name="personnummer"><br>
 		förnamn:<input type="text" name="fnamn"><br>
 		efternamn<input type="text" name="enamn"><br>
+		personnummer:<input type="text" name="personnummer"><br>
 		<input type="submit">
 	</form>
 	<br>
 	<br>
 	bok
 	<form action="registreringMedia" method="post">
-		bokens id:<input type="text" name="bokId"><br>
 		title:<input type="text" name="title"><br>
 		författarens förnamn:<input type="text" name="skaparefnamn"><br>
 		författarens efternamn:<input type="text" name="skapareenamn"><br>
+		bokens id:<input type="text" name="bokId"><br>
 		<input type="submit" name="submit" value="bok">
 	</form>
 	<br>
@@ -29,12 +29,12 @@
 	
 	cd
 	<form action="registreringMedia" method="post">
-		cdns id:<input type="text" name="cdId"><br>
 		title:<input type="text" name="title"><br>
 		författarens förnamn:<input type="text" name="skaparefnamn"><br>
 		författarens efternamn:<input type="text" name="skapareenamn"><br>
 		uppläsarens förnamn:<input type="text" name="uppläsarefnamn"><br>
 		uppläsarens efternamn:<input type="text" name="uppläsareenamn"><br>
+		cdns id:<input type="text" name="cdId"><br>
 		<input type="submit" name="submit" value="cd">
 	</form>
 	<br>
@@ -48,6 +48,43 @@
 		regissör efternamn:<input type="text" name="skapareenamn"><br>
 		<input type="submit" name="submit" value="dvd">
 	</form>
+	
+	
+	
+	
+	
+	
+	
+	<br>
+	<br>
+	låna bok
+	<form action="låna" method="post">
+		personnummer:<input type="text" name="elevId"><br>
+		bokens serienummer:<input type="text" name="bokId"><br>
+		<input type="submit" name="submit" value="låna bok">
+	</form>
+	
+	<br>
+	<br>
+	låna cd
+	<form action="låna" method="post">
+		personnummer:<input type="text" name="elevId"><br>
+		cdns serienummer:<input type="text" name="bokId"><br>
+		<input type="submit" name="submit" value="låna cd">
+	</form>
+	
+	<br>
+	<br>
+	låna dvd
+	<form action="låna" method="post">
+		personnummer:<input type="text" name="elevId"><br>
+		dvdns serienummer:<input type="text" name="bokId"><br>
+		<input type="submit" name="submit" value="låna dvd">
+	</form>
+	
+	
+	
+	
 	
 	
 	
