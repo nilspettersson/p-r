@@ -36,40 +36,85 @@ public class låna extends HttpServlet {
 		
 		
 		Object[][] elev=db.getData("elev where personNummer="+request.getParameter("elevId"));
+		
+		
+		
 		if(elev.length>0) {
 			if(request.getParameter("submit").equals("låna bok")) {
 				String elevId=request.getParameter("elevId");
 				String bokId=request.getParameter("bokId");
 				String datum=getTime();
 				
+				
+				Object[][] lånadeBöker=db.getData("lånadeBoker where bokId="+bokId);
+				if(lånadeBöker.length>0) {
+					System.out.println("boken är redan lånad");
+					response.sendRedirect("index.jsp");
+				}
+				
+				
 				Object[][] bok=db.getData("bok where bokId="+bokId);
 				if(bok.length>0) {
 					db.execute("insert into lånadeboker(elevId,bokId,datum) values('"+elevId+"','"+bokId+"','"+datum+"')");
 				}
+				else {
+					System.out.println("bok finns inte");
+					response.sendRedirect("index.jsp");
+				}
 			}
 			else if(request.getParameter("submit").equals("låna cd")) {
 				String elevId=request.getParameter("elevId");
-				String cdId=request.getParameter("bokId");
+				String cdId=request.getParameter("cdId");
 				String datum=getTime();
 				
-				Object[][] cd=db.getData("bok where bokId="+cdId);
+				
+				
+				Object[][] lånadecds=db.getData("lånadecds where cdId="+cdId);
+				if(lånadecds.length>0) {
+					System.out.println("cdn är redan lånad");
+					response.sendRedirect("index.jsp");
+				}
+				
+				
+				
+				Object[][] cd=db.getData("cd where cdId="+cdId);
 				if(cd.length>0) {
-					db.execute("insert into lånadecds(elevId,bokId,datum) values('"+elevId+"','"+datum+"','"+cdId+"')");
+					
+					db.execute("insert into lånadecds(elevId,datum,cdId) values('"+elevId+"','"+datum+"','"+cdId+"')");
+				}
+				else {
+					System.out.println("cd finns inte");
+					response.sendRedirect("index.jsp");
 				}
 			}
 			else if(request.getParameter("submit").equals("låna dvd")) {
 				String elevId=request.getParameter("elevId");
-				String dvdId=request.getParameter("bokId");
+				String dvdId=request.getParameter("dvdId");
 				String datum=getTime();
 				
-				Object[][] dvd=db.getData("bok where bokId="+dvdId);
+				
+				
+				Object[][] lånadecds=db.getData("lånadedvds where dvdId="+dvdId);
+				if(lånadecds.length>0) {
+					System.out.println("dvdn är redan lånad");
+					response.sendRedirect("index.jsp");
+				}
+				
+				
+				
+				
+				Object[][] dvd=db.getData("dvd where dvdId="+dvdId);
 				if(dvd.length>0) {
-					db.execute("insert into lånadedvds(elevId,bokId,datum) values('"+elevId+"','"+datum+"','"+dvdId+"')");
+					db.execute("insert into lånadedvds(elevId,datum,dvdId) values('"+elevId+"','"+datum+"','"+dvdId+"')");
+				}
+				else {
+					System.out.println("dvd finns inte");
+					response.sendRedirect("index.jsp");
 				}
 			}
 		}
 		else {
-			System.out.println("personnummer not found");
+			System.out.println("personnummer finns inte");
 			response.sendRedirect("index.jsp");
 		}
 		

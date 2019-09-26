@@ -7,12 +7,41 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
+	<form action="show" method="post">
+		<input type="submit" name="submit" value="elever">
+	</form>
+	
+	<form action="show" method="post">
+		<input type="submit" name="submit" value="bok">
+	</form>
+	<form action="show" method="post">
+		<input type="submit" name="submit" value="cd">
+	</form>
+	<form action="show" method="post">
+		<input type="submit" name="submit" value="dvd">
+	</form>
+	
+	
+	<form action="show" method="post">
+		<input type="submit" name="submit" value="lånadeBöker">
+	</form>
+	<form action="show" method="post">
+		<input type="submit" name="submit" value="lånadeCds">
+	</form>
+	<form action="show" method="post">
+		<input type="submit" name="submit" value="lånadeDvds">
+	</form>
+	
+	
+
 	
 	<form action="registreringElev" method="post">
 		förnamn:<input type="text" name="fnamn"><br>
 		efternamn<input type="text" name="enamn"><br>
 		personnummer:<input type="text" name="personnummer"><br>
-		<input type="submit">
+		<input type="submit" value="registrera ny elev">
 	</form>
 	<br>
 	<br>
@@ -69,7 +98,7 @@
 	låna cd
 	<form action="låna" method="post">
 		personnummer:<input type="text" name="elevId"><br>
-		cdns serienummer:<input type="text" name="bokId"><br>
+		cdns serienummer:<input type="text" name="cdId"><br>
 		<input type="submit" name="submit" value="låna cd">
 	</form>
 	
@@ -78,7 +107,7 @@
 	låna dvd
 	<form action="låna" method="post">
 		personnummer:<input type="text" name="elevId"><br>
-		dvdns serienummer:<input type="text" name="bokId"><br>
+		dvdns serienummer:<input type="text" name="dvdId"><br>
 		<input type="submit" name="submit" value="låna dvd">
 	</form>
 	
