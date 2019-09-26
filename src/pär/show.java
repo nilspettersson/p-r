@@ -2,6 +2,11 @@ package pär;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,11 +46,13 @@ public class show extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		database db=new database("localhost", "root", "", "pär");
 		
+		//visar alla elever
 		if(request.getParameter("submit").equals("elever")) {
 			Object[][] elever=db.getData("elev");
 			for(int i=0;i<elever.length;i++) {
 					out.print(elever[i][2]+" ");
-					out.print(elever[i][3]);
+					out.print(elever[i][3]+"  personnummer: ");
+					out.print(elever[i][1]);
 					out.println("");
 					
 			}
@@ -101,9 +108,16 @@ public class show extends HttpServlet {
 				Object[][] elev=db.getData("elev where personNummer="+lånadeBoker[i][1]);
 				Object[][] bok=db.getData("bok where bokId="+lånadeBoker[i][2]);
 				if(elev.length>0) {
-					out.print(i+" title: "+bok[0][2]);
-					out.println("    lånad av: "+elev[0][2]+" "+elev[0][3]);
-					out.println();
+					String end=getDate(lånadeBoker[i][3].toString(), -1);
+					String current=getTime();
+					
+					
+					out.print("title: "+bok[i][2]);
+					out.println("    lånad av: "+elev[i][2]+" "+elev[i][3]);
+					out.println("        lämnas in senast: "+end);
+					if(late(current, end)) {
+						out.print("<p style='color:red;'>denna bok är inte inlämnad i tid!</p>");
+					}
 				}
 				
 				
@@ -121,9 +135,14 @@ public class show extends HttpServlet {
 				Object[][] elev=db.getData("elev where personNummer="+lånadeBoker[i][1]);
 				Object[][] cd=db.getData("cd where cdId="+lånadeBoker[i][3]);
 				if(elev.length>0) {
-					out.print("title: "+cd[0][2]);
-					out.println("    lånad av: "+elev[0][2]+" "+elev[0][3]);
-					out.println();
+					String end=getDate(lånadeBoker[i][2].toString(), -1);
+					String current=getTime();
+					
+					out.print("title: "+cd[i][2]);
+					out.println("    lånad av: "+elev[i][2]+" "+elev[i][3]);
+					if(late(current, end)) {
+						out.print("<p style='color:red;'>denna cd är inte inlämnad i tid!</p>");
+					}
 				}
 				
 				
@@ -141,9 +160,14 @@ public class show extends HttpServlet {
 				Object[][] elev=db.getData("elev where personNummer="+lånadeBoker[i][1]);
 				Object[][] bok=db.getData("dvd where dvdId="+lånadeBoker[i][3]);
 				if(elev.length>0) {
-					out.print("title: "+bok[0][2]);
-					out.println("    lånad av: "+elev[0][2]+" "+elev[0][3]);
-					out.println();
+					String end=getDate(lånadeBoker[i][2].toString(), -1);
+					String current=getTime();
+					
+					out.print("title: "+bok[i][2]);
+					out.println("    lånad av: "+elev[i][2]+" "+elev[i][3]);
+					if(late(current, end)) {
+						out.print("<p style='color:red;'>denna dvd är inte inlämnad i tid!</p>");
+					}
 				}
 				
 				
@@ -159,5 +183,60 @@ public class show extends HttpServlet {
 		
 		doGet(request, response);
 	}
+	
+	
+	
+	public String getDate(String date,int addDays) {
+		String dt = date;  // Start date
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar c = Calendar.getInstance();
+		try {
+			c.setTime(sdf.parse(dt));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		c.add(Calendar.DATE, addDays);  // number of days to add
+		dt = sdf.format(c.getTime());
+		
+		return dt;
+		
+	}
+	
+	public boolean late(String current,String end) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar currentCalender = Calendar.getInstance();
+		try {
+			currentCalender.setTime(sdf.parse(current));
+		
+		
+		Calendar endCalender = Calendar.getInstance();
+		
+			endCalender.setTime(sdf.parse(end));
+		
+		
+		 if(currentCalender.after(endCalender)){
+	           return true;
+	     }
+		 
+		 
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+		 
+	}
+	
+	
+	public static String getTime() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+		LocalDateTime now = LocalDateTime.now();  
+		String time=dtf.format(now);  
+		return time;
+	}
+	
+	
 
 }

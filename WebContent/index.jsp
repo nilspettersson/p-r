@@ -12,7 +12,8 @@
 	<form action="show" method="post">
 		<input type="submit" name="submit" value="elever">
 	</form>
-	
+	<br>
+	<br>
 	<form action="show" method="post">
 		<input type="submit" name="submit" value="bok">
 	</form>
@@ -23,7 +24,8 @@
 		<input type="submit" name="submit" value="dvd">
 	</form>
 	
-	
+	<br>
+	<br>
 	<form action="show" method="post">
 		<input type="submit" name="submit" value="lånadeBöker">
 	</form>
@@ -36,7 +38,9 @@
 	
 	
 
-	
+	<br>
+	<br>
+	<h2>registrera elev</h2>
 	<form action="registreringElev" method="post">
 		förnamn:<input type="text" name="fnamn"><br>
 		efternamn<input type="text" name="enamn"><br>
@@ -45,7 +49,9 @@
 	</form>
 	<br>
 	<br>
-	bok
+	
+	
+	<h2>registrera bok</h2>
 	<form action="registreringMedia" method="post">
 		title:<input type="text" name="title"><br>
 		författarens förnamn:<input type="text" name="skaparefnamn"><br>
@@ -56,7 +62,7 @@
 	<br>
 	<br>
 	
-	cd
+	<h2>registrera cd</h2>
 	<form action="registreringMedia" method="post">
 		title:<input type="text" name="title"><br>
 		författarens förnamn:<input type="text" name="skaparefnamn"><br>
@@ -69,12 +75,13 @@
 	<br>
 	<br>
 	
-	dvd
+	<h2>registrera dvd</h2>
 	<form action="registreringMedia" method="post">
-		dvdns id:<input type="text" name="dvdId"><br>
+		
 		title:<input type="text" name="title"><br>
 		regissör förnamn:<input type="text" name="skaparefnamn"><br>
 		regissör efternamn:<input type="text" name="skapareenamn"><br>
+		dvdns id:<input type="text" name="dvdId"><br>
 		<input type="submit" name="submit" value="dvd">
 	</form>
 	
@@ -86,7 +93,7 @@
 	
 	<br>
 	<br>
-	låna bok
+	<h2>låna bok</h2>
 	<form action="låna" method="post">
 		personnummer:<input type="text" name="elevId"><br>
 		bokens serienummer:<input type="text" name="bokId"><br>
@@ -95,7 +102,7 @@
 	
 	<br>
 	<br>
-	låna cd
+	<h2>låna cd</h2>
 	<form action="låna" method="post">
 		personnummer:<input type="text" name="elevId"><br>
 		cdns serienummer:<input type="text" name="cdId"><br>
@@ -104,7 +111,7 @@
 	
 	<br>
 	<br>
-	låna dvd
+	<h2>låna dvd</h2>
 	<form action="låna" method="post">
 		personnummer:<input type="text" name="elevId"><br>
 		dvdns serienummer:<input type="text" name="dvdId"><br>
