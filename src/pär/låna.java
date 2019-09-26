@@ -31,6 +31,9 @@ public class låna extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		
+		
 		PrintWriter out=response.getWriter();
 		database db=new database("localhost", "root", "", "pär");
 		
@@ -48,18 +51,18 @@ public class låna extends HttpServlet {
 				
 				Object[][] lånadeBöker=db.getData("lånadeBoker where bokId="+bokId);
 				if(lånadeBöker.length>0) {
-					System.out.println("boken är redan lånad");
-					response.sendRedirect("index.jsp");
-				}
-				
-				
-				Object[][] bok=db.getData("bok where bokId="+bokId);
-				if(bok.length>0) {
-					db.execute("insert into lånadeboker(elevId,bokId,datum) values('"+elevId+"','"+bokId+"','"+datum+"')");
+					out.println("boken är redan lånad");
 				}
 				else {
-					System.out.println("bok finns inte");
-					response.sendRedirect("index.jsp");
+					
+					Object[][] bok=db.getData("bok where bokId="+bokId);
+					if(bok.length>0) {
+						db.execute("insert into lånadeboker(elevId,bokId,datum) values('"+elevId+"','"+bokId+"','"+datum+"')");
+						out.println("du har lånat "+bok[0][2]);
+					}
+					else {
+						out.println("bok finns inte");
+					}
 				}
 			}
 			else if(request.getParameter("submit").equals("låna cd")) {
@@ -71,20 +74,21 @@ public class låna extends HttpServlet {
 				
 				Object[][] lånadecds=db.getData("lånadecds where cdId="+cdId);
 				if(lånadecds.length>0) {
-					System.out.println("cdn är redan lånad");
-					response.sendRedirect("index.jsp");
-				}
-				
-				
-				
-				Object[][] cd=db.getData("cd where cdId="+cdId);
-				if(cd.length>0) {
+					out.println("cdn är redan lånad");
 					
-					db.execute("insert into lånadecds(elevId,datum,cdId) values('"+elevId+"','"+datum+"','"+cdId+"')");
 				}
 				else {
-					System.out.println("cd finns inte");
-					response.sendRedirect("index.jsp");
+					
+					
+					Object[][] cd=db.getData("cd where cdId="+cdId);
+					if(cd.length>0) {
+						
+						db.execute("insert into lånadecds(elevId,datum,cdId) values('"+elevId+"','"+datum+"','"+cdId+"')");
+						out.println("du har lånat "+cd[0][2]);
+					}
+					else {
+						out.println("cd finns inte");
+					}
 				}
 			}
 			else if(request.getParameter("submit").equals("låna dvd")) {
@@ -96,20 +100,20 @@ public class låna extends HttpServlet {
 				
 				Object[][] lånadecds=db.getData("lånadedvds where dvdId="+dvdId);
 				if(lånadecds.length>0) {
-					System.out.println("dvdn är redan lånad");
-					response.sendRedirect("index.jsp");
-				}
-				
-				
-				
-				
-				Object[][] dvd=db.getData("dvd where dvdId="+dvdId);
-				if(dvd.length>0) {
-					db.execute("insert into lånadedvds(elevId,datum,dvdId) values('"+elevId+"','"+datum+"','"+dvdId+"')");
+					out.println("dvdn är redan lånad");
 				}
 				else {
-					System.out.println("dvd finns inte");
-					response.sendRedirect("index.jsp");
+					
+					
+					
+					Object[][] dvd=db.getData("dvd where dvdId="+dvdId);
+					if(dvd.length>0) {
+						db.execute("insert into lånadedvds(elevId,datum,dvdId) values('"+elevId+"','"+datum+"','"+dvdId+"')");
+						out.println("du har lånat "+dvd[0][2]);
+					}
+					else {
+						out.println("dvd finns inte");
+					}
 				}
 			}
 		}
@@ -118,6 +122,11 @@ public class låna extends HttpServlet {
 			response.sendRedirect("index.jsp");
 		}
 		
+		
+		
+		out.print("<form action='index.jsp'>"
+				+ "<input type='submit' value='go back'>"
+				+ "</form>");
 		
 		doGet(request, response);
 	}

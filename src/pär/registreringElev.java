@@ -30,6 +30,9 @@ public class registreringElev extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		
+		
 		PrintWriter out=response.getWriter();
 		
 		String personnummer=request.getParameter("personnummer");
@@ -39,9 +42,18 @@ public class registreringElev extends HttpServlet {
 		
 		database db=new database("localhost", "root", "", "pär");
 		
+		Object[][] elever=db.getData("elev where personNummer="+personnummer);
+		if(elever.length==0) {
+			db.execute("insert into elev(personnummer,fnamn,enamn) values ('"+personnummer+"','"+fnamn+"','"+enamn+"')");
+			out.print("elev registrerad");
+		}
+		else {
+			out.print("personnummer används redan");
+		}
 		
-		db.execute("insert into elev(personnummer,fnamn,enamn) values ('"+personnummer+"','"+fnamn+"','"+enamn+"')");
-		
+		out.print("<form action='index.jsp'>"
+				+ "<input type='submit' value='go back'>"
+				+ "</form>");
 		
 		
 		doGet(request, response);
