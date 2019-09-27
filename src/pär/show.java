@@ -51,10 +51,10 @@ public class show extends HttpServlet {
 			Object[][] elever=db.getData("elev");
 			for(int i=0;i<elever.length;i++) {
 					out.print(elever[i][2]+" ");
-					out.print(elever[i][3]+"  personnummer: ");
-					out.print(elever[i][1]);
-					out.println("");
-					
+					out.print(elever[i][3]+"<br>  ");
+					//out.print( "personnummer: "+elever[i][1]);
+					out.println("<br>");
+					out.println("<br>");
 			}
 		}
 		
@@ -62,10 +62,11 @@ public class show extends HttpServlet {
 		if(request.getParameter("submit").equals("bok")) {
 			Object[][] böker=db.getData("bok");
 			for(int i=0;i<böker.length;i++) {
-					out.print("title: "+böker[i][2]+"   ");
+					out.print("title: "+böker[i][2]+"<br>   ");
 					out.print("författare: "+böker[i][3]+" ");
 					out.print(böker[i][4]);
-					out.println("");
+					out.println("<br>");
+					out.println("<br>");
 					
 			}
 		}
@@ -79,7 +80,8 @@ public class show extends HttpServlet {
 					out.print(cds[i][4]+"    ");
 					out.print("uppläsare: "+cds[i][5]+" ");
 					out.print(cds[i][6]);
-					out.println("");
+					out.println("<br>");
+					out.println("<br>");
 					
 			}
 		}
@@ -91,7 +93,8 @@ public class show extends HttpServlet {
 					out.print("title: "+dvds[i][2]+"   ");
 					out.print("regissör: "+dvds[i][3]+" ");
 					out.print(dvds[i][4]);
-					out.println("");
+					out.println("<br>");
+					out.println("<br>");
 					
 			}
 		}
@@ -108,16 +111,18 @@ public class show extends HttpServlet {
 				Object[][] elev=db.getData("elev where personNummer="+lånadeBoker[i][1]);
 				Object[][] bok=db.getData("bok where bokId="+lånadeBoker[i][2]);
 				if(elev.length>0) {
-					String end=getDate(lånadeBoker[i][3].toString(), -1);
+					String end=getDate(lånadeBoker[i][3].toString(), 7*3);
 					String current=getTime();
 					
 					
-					out.print("title: "+bok[i][2]);
-					out.println("    lånad av: "+elev[i][2]+" "+elev[i][3]);
-					out.println("        lämnas in senast: "+end);
+					out.print("title: "+bok[0][2]);
+					out.println("<br>    lånad av: "+elev[0][2]+" "+elev[0][3]);
+					out.println("<br>        lämnas in senast: "+end);
 					if(late(current, end)) {
-						out.print("<p style='color:red;'>denna bok är inte inlämnad i tid!</p>");
+						out.print("<p style='color:red;'>denna bok är inte inlämnad i tid!</p><br>");
 					}
+					out.println("<br>");
+					out.println("<br>");
 				}
 				
 				
@@ -135,14 +140,17 @@ public class show extends HttpServlet {
 				Object[][] elev=db.getData("elev where personNummer="+lånadeBoker[i][1]);
 				Object[][] cd=db.getData("cd where cdId="+lånadeBoker[i][3]);
 				if(elev.length>0) {
-					String end=getDate(lånadeBoker[i][2].toString(), -1);
+					String end=getDate(lånadeBoker[i][2].toString(), 7*3);
 					String current=getTime();
 					
-					out.print("title: "+cd[i][2]);
-					out.println("    lånad av: "+elev[i][2]+" "+elev[i][3]);
+					out.print("title: "+cd[0][2]);
+					out.println("<br>    lånad av: "+elev[0][2]+" "+elev[0][3]);
+					out.println("<br>        lämnas in senast: "+end);
 					if(late(current, end)) {
-						out.print("<p style='color:red;'>denna cd är inte inlämnad i tid!</p>");
+						out.print("<p style='color:red;'>denna cd är inte inlämnad i tid!</p><br>");
 					}
+					out.println("<br>");
+					out.println("<br>");
 				}
 				
 				
@@ -160,14 +168,17 @@ public class show extends HttpServlet {
 				Object[][] elev=db.getData("elev where personNummer="+lånadeBoker[i][1]);
 				Object[][] bok=db.getData("dvd where dvdId="+lånadeBoker[i][3]);
 				if(elev.length>0) {
-					String end=getDate(lånadeBoker[i][2].toString(), -1);
+					String end=getDate(lånadeBoker[i][2].toString(), 7);
 					String current=getTime();
 					
-					out.print("title: "+bok[i][2]);
-					out.println("    lånad av: "+elev[i][2]+" "+elev[i][3]);
+					out.print("title: "+bok[0][2]);
+					out.println("<br>    lånad av: "+elev[0][2]+" "+elev[0][3]);
+					out.println("<br>        lämnas in senast: "+end);
 					if(late(current, end)) {
-						out.print("<p style='color:red;'>denna dvd är inte inlämnad i tid!</p>");
+						out.print("<p style='color:red;'>denna dvd är inte inlämnad i tid!</p><br>");
 					}
+					out.println("<br>");
+					out.println("<br>");
 				}
 				
 				

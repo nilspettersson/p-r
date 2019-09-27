@@ -42,9 +42,9 @@
 	<br>
 	<h2>registrera elev</h2>
 	<form action="registreringElev" method="post">
-		förnamn:<input type="text" name="fnamn"><br>
-		efternamn<input type="text" name="enamn"><br>
-		personnummer:<input type="text" name="personnummer"><br>
+		förnamn:<input type="text" name="fnamn" autocomplete="off"><br>
+		efternamn<input type="text" name="enamn" autocomplete="off"><br>
+		personnummer:<input type="text" name="personnummer" autocomplete="off"><br>
 		<input type="submit" value="registrera ny elev">
 	</form>
 	<br>
@@ -53,10 +53,10 @@
 	
 	<h2>registrera bok</h2>
 	<form action="registreringMedia" method="post">
-		title:<input type="text" name="title"><br>
-		författarens förnamn:<input type="text" name="skaparefnamn"><br>
-		författarens efternamn:<input type="text" name="skapareenamn"><br>
-		bokens id:<input type="text" name="bokId"><br>
+		title:<input type="text" name="title" autocomplete="off"><br>
+		författarens förnamn:<input type="text" name="skaparefnamn" autocomplete="off"><br>
+		författarens efternamn:<input type="text" name="skapareenamn" autocomplete="off"><br>
+		bokens id:<input type="text" name="bokId" autocomplete="off"><br>
 		<input type="submit" name="submit" value="bok">
 	</form>
 	<br>
@@ -64,12 +64,12 @@
 	
 	<h2>registrera cd</h2>
 	<form action="registreringMedia" method="post">
-		title:<input type="text" name="title"><br>
-		författarens förnamn:<input type="text" name="skaparefnamn"><br>
-		författarens efternamn:<input type="text" name="skapareenamn"><br>
-		uppläsarens förnamn:<input type="text" name="uppläsarefnamn"><br>
-		uppläsarens efternamn:<input type="text" name="uppläsareenamn"><br>
-		cdns id:<input type="text" name="cdId"><br>
+		title:<input type="text" name="title" autocomplete="off"><br>
+		författarens förnamn:<input type="text" name="skaparefnamn" autocomplete="off"><br>
+		författarens efternamn:<input type="text" name="skapareenamn" autocomplete="off"><br>
+		uppläsarens förnamn:<input type="text" name="uppläsarefnamn" autocomplete="off"><br>
+		uppläsarens efternamn:<input type="text" name="uppläsareenamn" autocomplete="off"><br>
+		cdns id:<input type="text" name="cdId" autocomplete="off"><br>
 		<input type="submit" name="submit" value="cd">
 	</form>
 	<br>
@@ -78,10 +78,10 @@
 	<h2>registrera dvd</h2>
 	<form action="registreringMedia" method="post">
 		
-		title:<input type="text" name="title"><br>
-		regissör förnamn:<input type="text" name="skaparefnamn"><br>
-		regissör efternamn:<input type="text" name="skapareenamn"><br>
-		dvdns id:<input type="text" name="dvdId"><br>
+		title:<input type="text" name="title" autocomplete="off"><br>
+		regissör förnamn:<input type="text" name="skaparefnamn" autocomplete="off"><br>
+		regissör efternamn:<input type="text" name="skapareenamn" autocomplete="off"><br>
+		dvdns id:<input type="text" name="dvdId" autocomplete="off"><br>
 		<input type="submit" name="submit" value="dvd">
 	</form>
 	
@@ -95,17 +95,17 @@
 	<br>
 	<h2>låna bok</h2>
 	<form action="låna" method="post">
-		personnummer:<input type="text" name="elevId"><br>
-		bokens serienummer:<input type="text" name="bokId"><br>
-		<input type="submit" name="submit" value="låna bok">
+		personnummer:<input type="text" name="elevId" autocomplete="off"><br>
+		bokens serienummer:<input type="text" name="bokId" autocomplete="off"><br>
+		<input type="submit" name="submit" value="låna bok" >
 	</form>
 	
 	<br>
 	<br>
 	<h2>låna cd</h2>
 	<form action="låna" method="post">
-		personnummer:<input type="text" name="elevId"><br>
-		cdns serienummer:<input type="text" name="cdId"><br>
+		personnummer:<input type="text" name="elevId" autocomplete="off"><br>
+		cdns serienummer:<input type="text" name="cdId" autocomplete="off"><br>
 		<input type="submit" name="submit" value="låna cd">
 	</form>
 	
@@ -113,8 +113,8 @@
 	<br>
 	<h2>låna dvd</h2>
 	<form action="låna" method="post">
-		personnummer:<input type="text" name="elevId"><br>
-		dvdns serienummer:<input type="text" name="dvdId"><br>
+		personnummer:<input type="text" name="elevId" autocomplete="off"><br>
+		dvdns serienummer:<input type="text" name="dvdId" autocomplete="off"><br>
 		<input type="submit" name="submit" value="låna dvd">
 	</form>
 	
